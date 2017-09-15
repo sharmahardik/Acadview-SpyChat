@@ -1,7 +1,8 @@
 from status_messages import current_status,Status_Messages
 from add_status import add_status
 from add_friend import add_friend
-import spy_details
+from select_friend import select_friend
+from spy_details import  Friends
 
 def start_chat(spy_name,spy_age,spy_rating):
     current_status = None
@@ -13,10 +14,11 @@ def start_chat(spy_name,spy_age,spy_rating):
     show_menu = True
 
     while show_menu :
-        menu_choices = "What do you want to do? \n" \
-                       " 1. Add a status update \n 2. Add a friend \n " \
-                       "3. Send a secret message \n 4. Read a secret message \n " \
-                       "5. Read Chats from a user \n 6. Close Application \n"
+        menu_choices = "What do you want to do? \n1. Add a status update \n" \
+                       "2. Add a friend \n3. Select friend \n" \
+                       "4. Send a secret message \n5. Read a secret message\n" \
+                       "6. Read Chats from a user \n7. Close Application\n "
+
         menu_choice = raw_input(menu_choices)
 
         if len(menu_choice) > 0 :
@@ -26,6 +28,9 @@ def start_chat(spy_name,spy_age,spy_rating):
                 current_status = add_status(current_status)
             elif menu_choice == 2:
                 number_of_friends = add_friend()
+            elif menu_choice == 3:
+                index = select_friend()
+                print(Friends[index])
 
             else :
                 print("Enter valid option\n")
