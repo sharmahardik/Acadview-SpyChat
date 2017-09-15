@@ -3,7 +3,8 @@ from add_status import add_status
 from add_friend import add_friend
 from select_friend import select_friend
 from spy_details import  Friends
-
+from send_message import send_message
+from read_message import read_message
 def start_chat(spy_name,spy_age,spy_rating):
     current_status = None
 
@@ -31,6 +32,10 @@ def start_chat(spy_name,spy_age,spy_rating):
             elif menu_choice == 3:
                 index = select_friend()
                 print(Friends[index])
+            elif menu_choice == 3:
+                send_message()
+            elif menu_choice == 4:
+                read_message()
 
             else :
                 print("Enter valid option\n")
