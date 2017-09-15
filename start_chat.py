@@ -1,5 +1,6 @@
 from status_messages import current_status,Status_Messages
 from add_status import add_status
+from add_friend import add_friend
 import spy_details
 
 def start_chat(spy_name,spy_age,spy_rating):
@@ -23,5 +24,8 @@ def start_chat(spy_name,spy_age,spy_rating):
 
             if menu_choice == 1:
                 current_status = add_status(current_status)
+            elif menu_choice == 2:
+                number_of_friends = add_friend()
+
             else :
                 print("Enter valid option\n")
