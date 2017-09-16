@@ -1,41 +1,69 @@
-from status_messages import current_status,Status_Messages
+# import statements
+from globals import current_status_message
 from add_status import add_status
 from add_friend import add_friend
-from select_friend import select_friend
-from spy_details import  Friends
 from send_message import send_message
 from read_message import read_message
-def start_chat(spy_name,spy_age,spy_rating):
-    current_status = None
+#from read_chat_history import read_chat_history
 
-   # spy_name = spy_salutation + " " + spy_name
-    print("Authentication complete.\n" +
-          "Name : " + spy_name + "\nAge : " + str(spy_age) +
-          "\nRating : " + str(spy_rating) + "\nProud to have you onboard !!!")
-    show_menu = True
 
-    while show_menu :
-        menu_choices = "What do you want to do? \n1. Add a status update \n" \
-                       "2. Add a friend \n3. Select friend \n" \
-                       "4. Send a secret message \n5. Read a secret message\n" \
-                       "6. Read Chats from a user \n7. Close Application\n "
+# importing termcolor for colorful output
+from termcolor import colored
 
-        menu_choice = raw_input(menu_choices)
+# start_chat() function definition.
+def start_chat(name, age, rating, status):
+    from globals import current_status_message
 
-        if len(menu_choice) > 0 :
-            menu_choice = int(menu_choice)
+    # age should be greater than 12 and less than 50.
+    if not (age > 12 and age < 50) :
+        # invalid age.
+        error_message = "Invalid age. Provide correct details."
+        print (colored(error_message,"red"))
+    else:
+        # authentication complete
+        # show all the spy details
+        # show a greeting message.
+        welcome_message = "Authentication complete. Welcome\n\n" \
+                          "Name : " + name + "\n" \
+                          "Age: " + str(age) + "\n" \
+                          "Rating: " + str(rating) + "\n" \
+                          "Proud to have you on board\n"
+        print welcome_message
 
-            if menu_choice == 1:
-                current_status = add_status(current_status)
-            elif menu_choice == 2:
+        # displaying menu for user.
+        show_menu = True
+        while show_menu:
+            menu_choices = "What do you want to do? \n\n " \
+                           "1. Add a status update \n " \
+                           "2. Add a friend \n " \
+                           "3. Send a secret message \n " \
+                           "4. Read a secret message \n " \
+                           "5. Read Chats from a user \n " \
+                           "6. Close Application \n\n"
+            result = int(raw_input(menu_choices))
+
+            # validating users input
+            if (result == 1):
+                # set your current status
+                current_status_message = add_status(current_status_message)
+            elif (result == 2):
+                # add a new friend
                 number_of_friends = add_friend()
-            elif menu_choice == 3:
-                index = select_friend()
-                print(Friends[index])
-            elif menu_choice == 3:
+                print 'You have %d friends' % (number_of_friends)
+            elif(result == 3):
+                # send a secret message
                 send_message()
-            elif menu_choice == 4:
+            elif (result == 4):
+                # read the secret message sent by friend
                 read_message()
+            elif(result == 5):
+                # read the chat history
+                read_chat_history()
+            elif (result == 6):
+                # close application
+                show_menu = False
 
-            else :
-                print("Enter valid option\n")
+            # if user chooses other than menu choices.
+            else:
+                print (colored("wrong choice try again.", 'green'))
+                exit()

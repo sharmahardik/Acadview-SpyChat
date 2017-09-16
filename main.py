@@ -1,46 +1,51 @@
-from spy_details import spy_name,spy_salutation,spy_rating,spy_age,spy_is_online
-from start_chat import start_chat
+# importing spy details and start chat
+from spy_details import spy
+from start_chat import  start_chat
 
-question = "Do you want to continue as\n"+ "Name : " + spy_name +\
-           "\nAge : " + str(spy_age) +"\nRating : " + str(spy_rating) +"(Y/N)"
+#Importing termcolor to get output colorful
+from termcolor import colored
 
-existing = raw_input(question)
+#Start greeting
+print (colored("\nHello!, Bro.","blue"))
+print "Let's get started!\n"
 
+#Ask the spy to continue as default spy  or create new spy
+question = "Do you want to continue as " + spy.salutation + " " + spy.name + " (Y/N): "
+existing = raw_input(colored(question,"red"))
 
-if (existing) == 'y' :
-    #spy_name = spy_salutation + " " + spy_name
-    start_chat(spy_name, spy_age, spy_rating)
+# validating input
+if (existing.upper() == "Y") :
+    # user wants to continue as default user.
 
-elif (existing) == 'n' :
-    spy_name = raw_input("What is your name?")
-    if len(spy_name)>0:
-        spy_salutation = raw_input("What should we call you\n Mr. or Ms")
-        spy_name = spy_salutation + " " + spy_name
-        print("Welcome!!! " + spy_name + ",\nGlad to have you here")
-        print("Alright" + spy_name + " We need to know more about you before we proceed.")
+    # concatination of salutation and name of spy.
+    spy_name = spy.salutation + " " + spy.name
 
-        spy_age = int(raw_input("What is your age ?"))
-        spy_rating = float(raw_input("What is your rating ?"))
-
-        if spy_rating > 4.5 :
-            print("Great Ace !!!\n")
-        elif spy_rating > 3.5 and spy_rating < 4.5 :
-            print("You are one of the bests !!!\n")
-        elif spy_rating > 2.5 and spy_rating < 3.5 :
-            print("You got the potential!!!\n")
-
-        spy_is_online = True
-
-        start_chat(spy_name, spy_age, spy_rating)
-
-    else :
-        print("Spy needs to enter a valid name !!!")
-
-else :
-    print("Enter correct option")
+    # starting chat application.
+    start_chat(spy.name, spy.age, spy.rating, spy.is_online)
+elif (existing.upper() == "N"):
+    # user wants to continue as new user
+    spy.name = raw_input("What is your name :")
+    # chek spy has any input or not
+    if len(spy.name) > 0:
+        spy.salutation = raw_input("What should we call you ? : ")
 
 
+        while True:
+            try:
+                spy.age = int(raw_input("Enter your age: ")) # converting users input to integer (typecasting)
+                break
+            except ValueError:
+                print "Invalid age. Try again"
 
+        # concatination of salutation and name of spy.
+        spy.name = spy.salutation + " " + spy.name
 
+        spy.rating = float(raw_input("What is your spy rating?")) # converting users input to float (typecasting)
+        spy.is_online = True
 
-
+        # starting chat application.
+        start_chat(spy.name, spy.age, spy.rating, spy.is_online)
+    else:
+        print "Invalid name. Try again."
+else:
+    print "Wrong choice. Try again."

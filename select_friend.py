@@ -1,14 +1,24 @@
-from spy_details import Friends
+# importing older friend if exist
+from spy_details import friends
 
+#from globals import friends
+
+# importing termcolor for colorful output
+from termcolor import colored
+
+# function to select friend from friend list.
 def select_friend():
-    count = 0
-    for friend in Friends :
-        print("%d \n%s \n%d \n%f is online")%(count+1,friend['name'],friend['age'],friend['rating'])
-        #print(count + 1 + "Name : " + friend.name + "\nAge : " + friend.age + "\nRating : " + friend.rating + "is online\n")
-        count = count + 1
 
-    friend_choice = int(raw_input("Choose your Friend !!!"))
-    index = friend_choice - 1
-    return index
-    #print(Friends[index])
+    # indexing position of friend.
+    counter = 1
 
+    # to select a friend with indexing
+    for friend in friends:
+        print str(counter) + ". " + friend.name + " Age : " + str(friend.age)
+
+        counter = counter + 1
+
+    # ask user which friend he wants to select to chat with
+    result = int(raw_input(colored("\nSelect from the list : ", 'magenta')))
+    # result the selected friend to perform action
+    return result - 1
