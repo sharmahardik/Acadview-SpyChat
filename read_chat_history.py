@@ -14,16 +14,16 @@ def read_chat_history():
     for chat in friends[read_chat].chats:
         # message is sent by me
         if (chat.sent_by_me != False) :
-            # the date and time with yellow color
-            print (colored(str(chat.time.strftime("%d %B %Y %A %H:%M"))+ ", ", 'yellow')),
+            # the date and time with blue color
+            print (colored(str(chat.time.strftime("%d %B %Y %A %H:%M"))+ ", ", 'blue')),
             # the message is printed in red
             print (colored("You said: ", 'red')),
             # default color black for text
             print str(chat.message)
         # message is sent by another spy
         else:
-            # the date and time with yellow color
-            print (colored(str(chat.time.strftime("%d %B %Y %A %H:%M"))+ ", ", 'yellow')),
+            # the date and time with blue color
+            print (colored(str(chat.time.strftime("%d %B %Y %A %H:%M"))+ ", ", 'blue')),
             # the message is printed in red
             print (colored(str(friends[read_chat].name)+"You said: ", 'red')),
             # default color black for text

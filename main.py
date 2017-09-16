@@ -5,8 +5,8 @@ from start_chat import  start_chat
 #Importing termcolor to get output colorful
 from termcolor import colored
 
-#Start greeting
-print (colored("\nHello!, Bro.","blue"))
+
+print (colored("\nHello! ","blue"))
 print "Let's get started!\n"
 
 #Ask the spy to continue as default spy  or create new spy

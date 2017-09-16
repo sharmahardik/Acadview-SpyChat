@@ -4,7 +4,7 @@ from add_status import add_status
 from add_friend import add_friend
 from send_message import send_message
 from read_message import read_message
-#from read_chat_history import read_chat_history
+from read_chat_history import read_chat_history
 
 
 # importing termcolor for colorful output
@@ -20,9 +20,7 @@ def start_chat(name, age, rating, status):
         error_message = "Invalid age. Provide correct details."
         print (colored(error_message,"red"))
     else:
-        # authentication complete
-        # show all the spy details
-        # show a greeting message.
+
         welcome_message = "Authentication complete. Welcome\n\n" \
                           "Name : " + name + "\n" \
                           "Age: " + str(age) + "\n" \

@@ -1,6 +1,6 @@
 # importing spy details and default or/and older status
 from spy_details import spy
-from globals import STATUS_MESSAGES, current_status_message
+from globals import Status_Mesages, current_status_message
 
 # importing termcolor colorful output
 from termcolor import colored
@@ -28,7 +28,7 @@ def add_status(current_status_message):
         # validating users input.
         if len(new_status_message) > 0:
             # adding new status to default status or older status list.
-            STATUS_MESSAGES.append(new_status_message)
+            Status_Mesages.append(new_status_message)
             #updated status
             updated_status_message = new_status_message
             print 'Your updated status message is: %s' % (updated_status_message)
@@ -42,7 +42,7 @@ def add_status(current_status_message):
         item_position = 1
 
         # printing all older status messages so spy can choose
-        for message in STATUS_MESSAGES:
+        for message in Status_Mesages:
             print '%d. %s' % (item_position, message)
             item_position = item_position + 1
 
@@ -50,9 +50,9 @@ def add_status(current_status_message):
         message_selection = int(raw_input(colored("\nChoose from the Index of status: ",'cyan')))
 
         # validating users input and set status of choice if exist.
-        if len(STATUS_MESSAGES) >= message_selection:
+        if len(Status_Mesages) >= message_selection:
             #updating
-            updated_status_message = STATUS_MESSAGES[message_selection - 1]
+            updated_status_message = Status_Mesages[message_selection - 1]
             print 'Your updated status message is: %s' % (updated_status_message)
         # when user has wrong choice or choice that does not exist.
         else:
